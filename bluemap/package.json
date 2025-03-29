@@ -1,0 +1,21 @@
+{
+  "name": "bluemap",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "tsc && vite build --watch"
+  },
+  "dependencies": {
+    "three": "^0.174.0",
+    "atlas": "file:../atlas-lib"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.8",
+    "@types/three": "^0.174.0",
+    "@types/atlas": "file:../atlas-lib",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

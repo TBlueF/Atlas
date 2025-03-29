@@ -1,0 +1,25 @@
+{
+  "name": "atlas",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/atlas.cjs",
+  "module": "./dist/atlas.js",
+  "exports": {
+    ".": "./dist/atlas.js"
+  },
+  "scripts": {
+    "build": "tsup --format esm --dts --minify --sourcemap",
+    "dev": "tsup --format esm --dts --minify --sourcemap --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "@types/three": "^0.174.0",
+    "tsup": "^8.4.0",
+    "typescript": "~5.7.2"
+  },
+  "dependencies": {
+    "three": "^0.174.0"
+  }
+}
