@@ -11,10 +11,10 @@ export default defineConfig({
                 input: "../bluemap/dist/bluemap.js*",
                 output: "/addons"
             },
-            /*{
+            {
                 input: "../atlas-lib/dist/atlas.js*",
                 output: "/assets"
-            }*/
+            }
         ]),
     ],
     publicDir: false, // handled by vite-multiple-assets plugin
