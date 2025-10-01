@@ -1,14 +1,21 @@
-import * as THREE from "three";
+import {
+    ClampToEdgeWrapping, FrontSide,
+    Material,
+    NearestFilter,
+    NearestMipMapLinearFilter,
+    RawShaderMaterial,
+    Texture
+} from "three";
+import { TextureAnimation, TextureAnimationSettings } from "./TextureAnimation.ts"
+import { stringToImage } from "../../util.ts"
 import HIRES_VERTEX_SHADER from "./HiresVertexShader.glsl?raw"
 import HIRES_FRAGMENT_SHADER from "./HiresFragmentShader.glsl?raw"
-import { stringToImage } from "../../Util.ts";
-import { TextureAnimation, TextureAnimationSettings } from "./TextureAnimation.ts";
 
-export function createHiresMaterials(settings: Partial<HiresMaterialSettings>[]): THREE.Material[] {
+export function createHiresMaterials(settings: Partial<HiresMaterialSettings>[]): Material[] {
     return settings.map(createHiresMaterial);
 }
 
-export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettings>): THREE.Material {
+export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettings>): Material {
     const settings = {
         color: [0.5, 0, 0.5, 1],
         halfTransparent: false,
@@ -21,44 +28,44 @@ export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettin
     const transparent = settings.halfTransparent ?? false;
     const animation = settings.animation ? new TextureAnimation(settings.animation) : null;
 
-    const texture = new THREE.Texture();
+    const texture = new Texture();
     texture.image = stringToImage(settings.texture);
     texture.anisotropy = 1;
     texture.generateMipmaps = opaque || transparent;
-    texture.magFilter = THREE.NearestFilter;
-    texture.minFilter = texture.generateMipmaps ? THREE.NearestMipMapLinearFilter : THREE.NearestFilter;
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
+    texture.magFilter = NearestFilter;
+    texture.minFilter = texture.generateMipmaps ? NearestMipMapLinearFilter : NearestFilter;
+    texture.wrapS = ClampToEdgeWrapping;
+    texture.wrapT = ClampToEdgeWrapping;
     texture.flipY = false;
     texture.image.addEventListener("load", () => {
         texture.needsUpdate = true
         animation?.init(texture.image.naturalWidth, texture.image.naturalHeight)
     });
 
-    const material = new THREE.RawShaderMaterial({
-        uniforms: {
-            textureImage: { value: texture },
-            ...animation?.uniforms,
-        },
-        vertexShader: HIRES_VERTEX_SHADER,
-        fragmentShader: HIRES_FRAGMENT_SHADER,
-        transparent: transparent,
-        depthWrite: true,
-        depthTest: true,
-        vertexColors: true,
-        side: THREE.FrontSide,
-        wireframe: false,
-    });
+    const material = new RawShaderMaterial();
+
+    material.uniforms = {
+        textureImage: { value: texture },
+    ...animation?.uniforms,
+    };
+    material.vertexShader = HIRES_VERTEX_SHADER;
+    material.fragmentShader = HIRES_FRAGMENT_SHADER;
+    material.transparent = transparent;
+    material.depthWrite = true;
+    material.depthTest = true;
+    material.vertexColors = true;
+    material.side = FrontSide;
+    material.wireframe = false;
     material.needsUpdate = true;
     if (animation) material.onBeforeRender = () => animation.update();
 
     return material;
 }
 
-export interface HiresMaterialSettings {
+export type HiresMaterialSettings = {
     resourcePath: string,
-    color: (number | undefined)[],
+    color: number[],
     halfTransparent: boolean,
     texture: string,
-    animation: Partial<TextureAnimationSettings>
+    animation: TextureAnimationSettings
 }

@@ -8,19 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "atlas": "file:../atlas-lib",
-    "three": "^0.174.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@types/atlas": "file:../atlas-lib",
     "@types/node": "^22.13.8",
-    "@types/three": "^0.174.0",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "sass": "^1.85.1",
-    "typescript": "~5.7.2",
-    "vite": "^6.2.0",
+    "typescript": "~5.8.2",
+    "vite": "7.1.5",
     "vite-multiple-assets": "^2.2.5",
     "vue-tsc": "^2.2.4"
   }

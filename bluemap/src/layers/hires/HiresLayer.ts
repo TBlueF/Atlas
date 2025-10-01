@@ -1,11 +1,12 @@
-import { Layer, LayerSettings, Scene } from "atlas";
+import { Layer, LayerSettings, Stage } from "atlas"
+import { createHiresMaterials, HiresMaterialSettings } from "./HiresMaterial.ts"
 
 export class HiresLayer extends Layer {
 
-    settings: HiresLayerSettings;
+    settings: HiresLayerSettings
 
-    constructor(scene: Scene, settings: Partial<HiresLayerSettings>) {
-        super(scene, settings);
+    constructor(stage: Stage, settings: Partial<HiresLayerSettings>) {
+        super(stage, settings);
         this.settings = {
             type: "bluemap:hires",
             tilesPath: "./maps/overworld/tiles/0/",
@@ -15,15 +16,17 @@ export class HiresLayer extends Layer {
     }
 
     async initialize(): Promise<void> {
-
+        console.log("initializing hires...")
+        const materialSettings: Partial<HiresMaterialSettings>[] = []//await new JsonLoader().loadAsync(this.settings.texturePath);
+        const hiresMaterials = createHiresMaterials(materialSettings);
     }
 
     update(deltaTime: number): void {
-
+        console.log("updating hires...")
     }
 
     render(deltaTime: number): void {
-
+        console.log("rendering hires...")
     }
 
 }

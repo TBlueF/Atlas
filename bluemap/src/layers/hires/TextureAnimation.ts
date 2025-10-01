@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import { IUniform } from "three"
 
 export class TextureAnimation {
 
@@ -79,7 +79,7 @@ export class TextureAnimation {
 
 }
 
-export interface TextureAnimationSettings {
+export type TextureAnimationSettings = {
     interpolate: boolean,
     width: number,
     height: number,
@@ -90,9 +90,9 @@ export interface TextureAnimationSettings {
     }[]
 }
 
-export interface TextureAnimationUniforms {
-    animationFrameHeight: THREE.IUniform<number>,
-    animationFrameIndex: THREE.IUniform<number>,
-    animationInterpolationFrameIndex: THREE.IUniform<number>,
-    animationInterpolation: THREE.IUniform<number>
+export type TextureAnimationUniforms = {
+    animationFrameHeight: IUniform<number>,
+    animationFrameIndex: IUniform<number>,
+    animationInterpolationFrameIndex: IUniform<number>,
+    animationInterpolation: IUniform<number>
 }

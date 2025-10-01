@@ -1,5 +1,7 @@
-import { FileLoader } from "three";
+export type Unloadable = {
+    unload: () => void;
+}
 
 export function throwError(error: Error | string): never {
-    throw error;
+    throw error instanceof Error ? error : new Error(error);
 }

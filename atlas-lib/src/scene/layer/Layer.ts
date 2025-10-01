@@ -1,16 +1,16 @@
-import type { Scene } from "../Scene.ts";
+import { Stage } from "../Stage"
 
 export class Layer {
 
-    settings: LayerSettings;
-    scene: Scene;
+    settings: LayerSettings
+    scene: Stage
 
-    constructor(scene: Scene, settings: Partial<LayerSettings>) {
+    constructor(scene: Stage, settings: Partial<LayerSettings>) {
         this.settings = {
             type: "layer",
             ...settings
         };
-        this.scene = scene;
+        this.scene = scene
     }
 
     async initialize(): Promise<void> {

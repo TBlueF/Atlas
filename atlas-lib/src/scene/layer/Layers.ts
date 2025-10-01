@@ -1,10 +1,10 @@
-import type { Scene } from "../Scene.ts";
-import type { LayerSettings } from "./Layer.ts";
-import { Layer } from "./Layer.ts";
+import type { Stage } from "../Stage";
+import type { LayerSettings } from "./Layer";
+import { Layer } from "./Layer";
 
 type LayerConstructor = new (
-    scene: Scene,
+    scene: Stage,
     settings: Partial<LayerSettings>
-) => Layer;
+) => Layer
 
-export const LAYER_TYPES = new Map<string, LayerConstructor>([]);
+export const LAYER_TYPES = new Map<string, LayerConstructor>([])

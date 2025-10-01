@@ -6,16 +6,16 @@ import dts from "unplugin-dts/vite"
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-    plugins: [ dts({ bundleTypes: true, tsconfigPath: './tsconfig.addon.json' }) ],
+    plugins: [ dts({ bundleTypes: true, tsconfigPath: './tsconfig.lib.json' }) ],
     build: {
         sourcemap: true,
         lib: {
-            entry: resolve(__dirname, "src/bluemap.js"),
-            name: "BlueMap",
-            fileName: "bluemap",
+            entry: resolve(__dirname, "src/atlas.js"),
+            name: "Atlas",
+            fileName: "atlas",
         },
         rollupOptions: {
-            external: ["three", "atlas"]
+            external: ["three"]
         },
     },
 })
