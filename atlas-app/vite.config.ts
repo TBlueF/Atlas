@@ -1,12 +1,22 @@
 import vue from "@vitejs/plugin-vue";
+import path from "path";
 import { defineConfig } from "vite";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
+
+const threePath = path.relative(import.meta.dirname, path.join(import.meta.resolve("three"), "../../").slice(5));
 
 export default defineConfig({
     plugins: [
         vue(),
         DynamicPublicDirectory([
-            "public/**",
+            {
+                input: `${threePath}/build/three.module.min.js*`,
+                output: "/assets",
+            },
+            {
+                input: `${threePath}/build/three.core.min.js*`,
+                output: "/assets",
+            },
             {
                 input: "../bluemap/dist/bluemap.js*",
                 output: "/addons",

@@ -17,6 +17,9 @@ importers:
       '@bluemap/atlas-lib':
         specifier: workspace:*
         version: link:../atlas-lib
+      three:
+        specifier: ^0.180.0
+        version: 0.180.0
       vue:
         specifier: ^3.5.13
         version: 3.5.22(typescript@5.8.3)
