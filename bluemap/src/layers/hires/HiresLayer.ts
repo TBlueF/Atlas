@@ -1,9 +1,8 @@
-import { Layer, LayerSettings, Stage } from "atlas"
-import { createHiresMaterials, HiresMaterialSettings } from "./HiresMaterial.ts"
+import { Layer, LayerSettings, Stage } from "@bluemap/atlas-lib";
+import { createHiresMaterials, HiresMaterialSettings } from "./HiresMaterial.ts";
 
 export class HiresLayer extends Layer {
-
-    settings: HiresLayerSettings
+    settings: HiresLayerSettings;
 
     constructor(stage: Stage, settings: Partial<HiresLayerSettings>) {
         super(stage, settings);
@@ -11,24 +10,23 @@ export class HiresLayer extends Layer {
             type: "bluemap:hires",
             tilesPath: "./maps/overworld/tiles/0/",
             texturePath: "./maps/overworld/textures.json",
-            ...settings
+            ...settings,
         };
     }
 
     async initialize(): Promise<void> {
-        console.log("initializing hires...")
-        const materialSettings: Partial<HiresMaterialSettings>[] = []//await new JsonLoader().loadAsync(this.settings.texturePath);
+        console.log("initializing hires...");
+        const materialSettings: Partial<HiresMaterialSettings>[] = []; //await new JsonLoader().loadAsync(this.settings.texturePath);
         const hiresMaterials = createHiresMaterials(materialSettings);
     }
 
     update(deltaTime: number): void {
-        console.log("updating hires...")
+        console.log("updating hires...");
     }
 
     render(deltaTime: number): void {
-        console.log("rendering hires...")
+        console.log("rendering hires...");
     }
-
 }
 
 export interface HiresLayerSettings extends LayerSettings {

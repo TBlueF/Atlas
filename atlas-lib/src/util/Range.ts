@@ -1,5 +1,4 @@
 export class Range {
-
     min?: number;
     max?: number;
 
@@ -11,5 +10,4 @@ export class Range {
     factor(value: number): number {
         return this.contains(value) ? 1 : 0;
     }
-
 }

@@ -1,12 +1,12 @@
-import { dirname, resolve } from "node:path"
-import { fileURLToPath } from "node:url"
-import { defineConfig } from "vite"
-import dts from "unplugin-dts/vite"
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { defineConfig } from "vite";
+import dts from "unplugin-dts/vite";
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-    plugins: [ dts({ bundleTypes: true, tsconfigPath: './tsconfig.addon.json' }) ],
+    plugins: [dts({ bundleTypes: true, tsconfigPath: "./tsconfig.addon.json" })],
     build: {
         sourcemap: true,
         lib: {
@@ -15,7 +15,7 @@ export default defineConfig({
             fileName: "bluemap",
         },
         rollupOptions: {
-            external: ["three", "atlas"]
+            external: ["three", "@bluemap/atlas-lib"],
         },
     },
-})
+});

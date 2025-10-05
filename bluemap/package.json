@@ -1,5 +1,7 @@
 {
-  "name": "bluemap",
+  "name": "@bluemap/bluemap",
+  "version": "0.0.0",
+  "private": true,
   "type": "module",
   "files": [
     "dist"
@@ -10,24 +12,23 @@
   "exports": {
     ".": {
       "import": "./dist/bluemap.mjs",
-      "require": "./dist/atlas.umd.js"
+      "require": "./dist/bluemap.umd.js"
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "vite"
+    "build": "tsc --noEmit && vite build",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "three": "^0.180.0",
+    "@bluemap/atlas-lib": "workspace:*"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.52.13",
     "@types/node": "^22.13.11",
     "@types/three": "^0.180.0",
-    "@types/atlas": "file:../atlas-lib",
     "typescript": "~5.8.2",
-    "unplugin-dts": "^1.0.0-beta.0",
+    "unplugin-dts": "^1.0.0-beta.6",
     "vite": "^7.1.7"
-  },
-  "dependencies": {
-    "three": "^0.180.0",
-    "atlas": "file:../atlas-lib"
   }
 }

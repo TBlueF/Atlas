@@ -1,7 +1,6 @@
-import { IUniform } from "three"
+import { IUniform } from "three";
 
 export class TextureAnimation {
-
     readonly settings: TextureAnimationSettings;
     readonly uniforms: TextureAnimationUniforms;
 
@@ -18,7 +17,7 @@ export class TextureAnimation {
             width: 1,
             height: 1,
             frametime: 1,
-            ...settingsRaw
+            ...settingsRaw,
         };
 
         this.frameImages = 1;
@@ -32,8 +31,8 @@ export class TextureAnimation {
             animationFrameHeight: { value: 1 },
             animationFrameIndex: { value: 0 },
             animationInterpolationFrameIndex: { value: 0 },
-            animationInterpolation: { value: 0 }
-        }
+            animationInterpolation: { value: 0 },
+        };
     }
 
     init(width: number, height: number) {
@@ -76,23 +75,22 @@ export class TextureAnimation {
             this.uniforms.animationInterpolation.value = this.frameDelta / this.frameTime;
         }
     }
-
 }
 
 export type TextureAnimationSettings = {
-    interpolate: boolean,
-    width: number,
-    height: number,
-    frametime: number,
+    interpolate: boolean;
+    width: number;
+    height: number;
+    frametime: number;
     frames?: {
-        index: number,
-        time: number
-    }[]
-}
+        index: number;
+        time: number;
+    }[];
+};
 
 export type TextureAnimationUniforms = {
-    animationFrameHeight: IUniform<number>,
-    animationFrameIndex: IUniform<number>,
-    animationInterpolationFrameIndex: IUniform<number>,
-    animationInterpolation: IUniform<number>
-}
+    animationFrameHeight: IUniform<number>;
+    animationFrameIndex: IUniform<number>;
+    animationInterpolationFrameIndex: IUniform<number>;
+    animationInterpolation: IUniform<number>;
+};
