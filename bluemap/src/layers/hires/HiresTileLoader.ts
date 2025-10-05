@@ -1,7 +1,7 @@
-import { RequestTileLoader } from "atlas"
-import { RequestQueue } from "atlas"
-import { PRBMParser } from "atlas"
-import { pathFromCoords } from "../../util.ts"
+import { RequestTileLoader } from "@bluemap/atlas-lib";
+import { RequestQueue } from "@bluemap/atlas-lib";
+import { PRBMParser } from "@bluemap/atlas-lib";
+import { pathFromCoords } from "../../util.ts";
 
 export class HiresTileLoader extends RequestTileLoader {
 

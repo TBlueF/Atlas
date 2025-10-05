@@ -15,7 +15,7 @@ export default defineConfig({
             fileName: "bluemap",
         },
         rollupOptions: {
-            external: ["three", "atlas"]
+            external: ["three", "@bluemap/atlas-lib"],
         },
     },
 })

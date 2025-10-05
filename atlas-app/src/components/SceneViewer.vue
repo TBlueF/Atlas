@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { onMounted, useTemplateRef } from "vue";
-  import { Stage, type SceneSettings } from "atlas";
+  import { Stage, type SceneSettings } from "@bluemap/atlas-lib";
 
   const props = defineProps<{ settings: SceneSettings }>();
   const containerElement = useTemplateRef<HTMLDivElement>('scene-container');

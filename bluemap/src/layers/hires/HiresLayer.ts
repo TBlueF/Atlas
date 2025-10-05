@@ -1,4 +1,4 @@
-import { Layer, LayerSettings, Stage } from "atlas"
+import { Layer, LayerSettings, Stage } from "@bluemap/atlas-lib";
 import { createHiresMaterials, HiresMaterialSettings } from "./HiresMaterial.ts"
 
 export class HiresLayer extends Layer {

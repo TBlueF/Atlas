@@ -22,8 +22,8 @@ export default defineConfig({
     build: {
         sourcemap: true,
         rollupOptions: {
-            external: ["atlas", "three"],
-        }
+            external: ["@bluemap/atlas-lib", "three"],
+        },
     },
     server: {
         proxy: {
