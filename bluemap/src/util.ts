@@ -1,4 +1,3 @@
-
 export function pathFromCoords(x: number, z: number) {
     let path = "x";
     path += splitNumberToPath(x);
@@ -29,7 +28,7 @@ function splitNumberToPath(num: number) {
 }
 
 export function stringToImage(string: string) {
-    const image = document.createElementNS('http://www.w3.org/1999/xhtml', 'img') as HTMLImageElement;
+    const image = document.createElementNS("http://www.w3.org/1999/xhtml", "img") as HTMLImageElement;
     image.src = string;
     return image;
 }

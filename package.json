@@ -2,5 +2,37 @@
   "name": "@bluemap/atlas",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.17.1"
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "*.yml",
+          "*.yaml",
+          "*.scss",
+          "*.html",
+          "*.vue"
+        ],
+        "options": {
+          "tabWidth": 2
+        }
+      }
+    ]
+  }
 }

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import { onErrorCaptured, ref } from "vue";
+import { onErrorCaptured, ref } from "vue";
 
-  const error = ref();
-  const errorMessage = ref("");
+const error = ref();
+const errorMessage = ref("");
 
-  onErrorCaptured((e, _, info) => {
-    console.error(e, info)
-    error.value = e;
-    errorMessage.value = info;
-    return false;
-  });
+onErrorCaptured((e, _, info) => {
+  console.error(e, info);
+  error.value = e;
+  errorMessage.value = info;
+  return false;
+});
 </script>
 
 <template>

@@ -1,6 +1,6 @@
-import { defineConfig } from "vite"
-import { DynamicPublicDirectory } from 'vite-multiple-assets'
-import vue from "@vitejs/plugin-vue"
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
+import { DynamicPublicDirectory } from "vite-multiple-assets";
 
 export default defineConfig({
     plugins: [
@@ -9,12 +9,12 @@ export default defineConfig({
             "public/**",
             {
                 input: "../bluemap/dist/bluemap.js*",
-                output: "/addons"
+                output: "/addons",
             },
             {
                 input: "../atlas-lib/dist/atlas.js*",
-                output: "/assets"
-            }
+                output: "/assets",
+            },
         ]),
     ],
     publicDir: false, // handled by vite-multiple-assets plugin
@@ -50,7 +50,7 @@ export default defineConfig({
                 //target: "http://localhost:8100",
                 target: "https://bluecolored.de/bluemap",
                 changeOrigin: true,
-            }
-        }
-    }
-})
+            },
+        },
+    },
+});

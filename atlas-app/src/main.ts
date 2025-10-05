@@ -7,9 +7,9 @@ export * from "three";
 
 (async () => {
     await loadAddon("bluemap");
-    createApp(App).mount('#app');
+    createApp(App).mount("#app");
 })();
 
 async function loadAddon(id: string) {
-    await import( /* @vite-ignore */ `../addons/${id}.js` )
+    await import(/* @vite-ignore */ `../addons/${id}.js`);
 }

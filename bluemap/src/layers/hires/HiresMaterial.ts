@@ -1,15 +1,16 @@
 import {
-    ClampToEdgeWrapping, FrontSide,
+    ClampToEdgeWrapping,
+    FrontSide,
     Material,
     NearestFilter,
     NearestMipMapLinearFilter,
     RawShaderMaterial,
-    Texture
+    Texture,
 } from "three";
-import { TextureAnimation, TextureAnimationSettings } from "./TextureAnimation.ts"
-import { stringToImage } from "../../util.ts"
-import HIRES_VERTEX_SHADER from "./HiresVertexShader.glsl?raw"
-import HIRES_FRAGMENT_SHADER from "./HiresFragmentShader.glsl?raw"
+import { TextureAnimation, TextureAnimationSettings } from "./TextureAnimation.ts";
+import { stringToImage } from "../../util.ts";
+import HIRES_VERTEX_SHADER from "./HiresVertexShader.glsl?raw";
+import HIRES_FRAGMENT_SHADER from "./HiresFragmentShader.glsl?raw";
 
 export function createHiresMaterials(settings: Partial<HiresMaterialSettings>[]): Material[] {
     return settings.map(createHiresMaterial);
@@ -19,9 +20,10 @@ export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettin
     const settings = {
         color: [0.5, 0, 0.5, 1],
         halfTransparent: false,
-        texture: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAPklEQVR4Xu3MsQkAMAwDQe2/tFPnBB4gpLhG8MpkZpNkZ6AKZKAKZKAKZKAKZKAKZKAKZKAKWg0XD/UPnjg4MbX+EDdeTUwAAAAASUVORK5CYII=",
-        ...partialSettings
-    }
+        texture:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAPklEQVR4Xu3MsQkAMAwDQe2/tFPnBB4gpLhG8MpkZpNkZ6AKZKAKZKAKZKAKZKAKZKAKZKAKWg0XD/UPnjg4MbX+EDdeTUwAAAAASUVORK5CYII=",
+        ...partialSettings,
+    };
 
     const color = settings.color;
     const opaque = color[3] === 1;
@@ -38,15 +40,15 @@ export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettin
     texture.wrapT = ClampToEdgeWrapping;
     texture.flipY = false;
     texture.image.addEventListener("load", () => {
-        texture.needsUpdate = true
-        animation?.init(texture.image.naturalWidth, texture.image.naturalHeight)
+        texture.needsUpdate = true;
+        animation?.init(texture.image.naturalWidth, texture.image.naturalHeight);
     });
 
     const material = new RawShaderMaterial();
 
     material.uniforms = {
         textureImage: { value: texture },
-    ...animation?.uniforms,
+        ...animation?.uniforms,
     };
     material.vertexShader = HIRES_VERTEX_SHADER;
     material.fragmentShader = HIRES_FRAGMENT_SHADER;
@@ -63,9 +65,9 @@ export function createHiresMaterial(partialSettings: Partial<HiresMaterialSettin
 }
 
 export type HiresMaterialSettings = {
-    resourcePath: string,
-    color: number[],
-    halfTransparent: boolean,
-    texture: string,
-    animation: TextureAnimationSettings
-}
+    resourcePath: string;
+    color: number[];
+    halfTransparent: boolean;
+    texture: string;
+    animation: TextureAnimationSettings;
+};

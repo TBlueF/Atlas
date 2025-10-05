@@ -1,20 +1,20 @@
 <script setup lang="ts">
-  import SceneViewer from "./SceneViewer.vue";
-  import ErrorBoundary from "./ErrorBoundary.vue";
+import SceneViewer from "./SceneViewer.vue";
+import ErrorBoundary from "./ErrorBoundary.vue";
 </script>
 
 <template>
   <ErrorBoundary>
-    <SceneViewer v-bind:settings="{
-      layers: [
+    <SceneViewer
+      v-bind:settings="{
+        layers: [
           {
-            type: 'bluemap:hires'
-          }
-      ]
-    }"></SceneViewer>
+            type: 'bluemap:hires',
+          },
+        ],
+      }"
+    ></SceneViewer>
   </ErrorBoundary>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

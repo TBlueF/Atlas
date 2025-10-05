@@ -1,7 +1,5 @@
-import { Tile } from "./Tile"
+import { Tile } from "./Tile";
 
 export interface TileLoader {
-
-    load(x: number, z: number, priority?: () => number): Tile
-
+    load(x: number, z: number, priority?: () => number): Tile;
 }

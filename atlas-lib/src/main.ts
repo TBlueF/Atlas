@@ -1,5 +1,5 @@
-import * as Atlas from "./atlas"
-import * as THREE from "three"
+import * as Atlas from "./atlas";
+import * as THREE from "three";
 
 /*
 export * from "./lib"
